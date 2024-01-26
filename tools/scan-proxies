@@ -1,0 +1,30 @@
+#!/bin/sh
+# Scan all the addresses in the JSON dataset
+# Find their logic addresses and write result to ${dest}/{prefix}/{address}.json
+# where prefix is the first two chars of the address
+# E.g. result/00/0x00000000000001ad428e4906ae43d8f9852d0dd6.json:
+# {
+#   "address": "0x00000000000001ad428e4906ae43d8f9852d0dd6",
+#   "success": true,
+#   "error": null,
+#   "is_proxy": false,
+#   "proxy_type": null,
+#   "reason": "no delegatecall in fallback function",
+#   "implementation_slot": null,
+#   "standard_implementation_slots": {},
+#   "current_implementation": null,
+#   "implementations": []
+# }
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: $0 <destination> <dataset>"
+    exit 1
+fi
+
+dest="$1"
+dataset="$2"
+
+# n_done=$(find "${dest}" -type f | wc -l)
+n_done=0
+
+< "${dataset}" jq -r ".[$n_done:][].address" | "${0%/*}/scan-proxies-run" "${dest}"

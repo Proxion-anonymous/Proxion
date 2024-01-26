@@ -1,0 +1,33 @@
+[tool.isort]
+profile = "black"
+line_length = 100
+src_paths = ["proxion", "tools"]
+
+[tool.black]
+line-length = 100
+
+[tool.poetry]
+name = "proxion"
+version = "0.1.0"
+description = ""
+authors = []
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12.1"
+octopus = { path = "octopus", develop = true }
+slither-analyzer = { path = "slither", develop = true }
+evm-cfg-builder = { path = "evm_cfg_builder", develop = true }
+hexbytes = "^0.3.1"
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.19.0"
+psycopg = { version = "^3.1.16", extras = ["binary", "pool"] }
+tqdm = "^4.66.1"
+web3 = "^6.13.0"
+pandas = "^2.1.4"
+semver = "^3.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

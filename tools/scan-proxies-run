@@ -1,0 +1,27 @@
+#!/bin/bash
+# Given addresses from stdin, scan them and write result to ${dest}/{prefix}/{address}.json
+# where prefix is the first two chars of the address
+# Run in parallel
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <destination>"
+    exit 1
+fi
+
+dest="$1"
+
+for i in {0..255}; do
+    mkdir -p "${dest}/$(printf '%02x' "$i")"
+done
+
+# sleep 0.1s so that parallel will spawn a subshell
+PARALLEL_SHELL=bash poetry run parallel --timeout 30s "
+    sleep 0.1
+    addr=\"{}\"
+    prefix=\"\${addr:2:2}\"
+    output=\"${dest}/\${prefix}/\${addr}.json\"
+    if [ ! -s \"\${output}\" ]; then
+        python3 ../proxy_checker/ProxyChecker.py \"\${addr}\" \
+            --no-slither --no-advanced-check --log-level WARN \
+            > \"\${output}\"
+    fi"

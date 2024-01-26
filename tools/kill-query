@@ -1,0 +1,7 @@
+#!/bin/sh
+
+docker exec proxion-db-1 psql -U proxychecker -c 'SELECT pid, query FROM pg_stat_activity;'
+printf %s "Enter the pid to terminate: "
+read -r pid
+docker exec proxion-db-1 psql -U proxychecker -c "SELECT pg_terminate_backend($pid);"
+

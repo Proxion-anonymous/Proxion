@@ -1,0 +1,14 @@
+Build:
+docker build ./ -t proxy_checker
+docker run -it proxy_checker bash
+Under /home directory and execute
+python3 ProxyChecker.py "smart contract address"
+
+The standard output will show the result.
+
+The source code of proxy and logic contracts are in output/ if the source code is available.
+For more detail result of security issues on proxy contract, check the output/result.
+
+Example:
+python3 ProxyChecker.py 0x3dd46846eed8d147841ae162c8425c08bd8e1b41
+

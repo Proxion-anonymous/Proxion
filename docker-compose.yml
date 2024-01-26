@@ -1,0 +1,32 @@
+services:
+  # Postgres Database
+  db:
+    image: postgres:16.0
+    volumes:
+      - ./.postgres-socket:/var/run/postgresql
+      - ./.postgres-data:/var/lib/postgresql/data
+      - ./.postgres-shared:/shared
+    environment:
+      POSTGRES_USER: proxychecker
+      POSTGRES_PASSWORD: proxychecker
+      POSTGRES_DB: proxychecker
+
+  adminer:
+    image: adminer:latest
+    environment:
+      - ADMINER_DEFAULT_DB_DRIVER=pgsql
+      - ADMINER_DEFAULT_DB_HOST=db
+      - ADMINER_DEFAULT_DB_NAME=proxychecker
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=a@b.com
+      - PGADMIN_DEFAULT_PASSWORD=proxychecker
+
+  # Rate Limiting Proxy
+  proxy:
+    image: nginx:latest
+    command: [ "nginx", "-g", "daemon off;" ]
+    volumes:
+      - ./tools/rate-limiting-proxy/nginx.conf:/etc/nginx/nginx.conf

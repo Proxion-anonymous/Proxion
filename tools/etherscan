@@ -1,0 +1,14 @@
+#!/bin/sh
+resp=$(curl --silent --get 'https://api.etherscan.io/api/' \
+  -d 'module=contract' \
+  -d 'action=getsourcecode' \
+  -d "address=$1" \
+  -d 'apiKey=HZTCZR4GP8WXNADISZ9TWSPS3U71KC3C1S'
+)
+src=$(printf %s "$resp" | jq -r '.result[0].SourceCode' | sed -E '1s/^\{\{\r?$/{/; $s/^\}\}$/}/')
+echo '--- Raw Response ---'
+printf %s "$resp" | jq
+echo '--- Single Source Code File ---'
+printf %s "$src"
+echo '--- Multiple Source Code Files ---'
+printf %s "$src" | jq

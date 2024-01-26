@@ -1,0 +1,8 @@
+results*/*/output/
+results*/*/error/
+usenix-second/solcs
+usenix-second/output
+.*
+dataset.json
+__pycache__
+bigquery-public-data.crypto_ethereum.contracts/*.csv
