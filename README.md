@@ -22,7 +22,7 @@ Proxion is a tool for inspecting proxy smart contracts in Ethereum. Its features
 
 - An Ethereum archive node to obtain the bytecode for analysis
 - An Etherscan API key to obtain the source code for analysis
-- A Python runtime with pip
+- Python 3.10 with pip
 
 An Etherscan API key and an Infura archive node API key is included by default, and can be
 changed in `proxion/Config.py`.
@@ -33,12 +33,13 @@ Run `./setup.sh` to complete the setup. It does the following:
 1. Install `poetry` via `pip` if not exists
 2. Create a virtual environment and install the dependent packages
 3. Install *all versions* of solc compilers via `solc-select`
+4. Spawn a shell inside the poetry virtual environment
 
 ## Execution Guide
 
 Run the tool by:
 ```shell
-poetry run python3 -m proxion --source-prefix <dir_to_keep_source_code> 0x95a3946104132973b00ec0a2f00f7cc2b67e751f
+python3 -m proxion --source-prefix dir_to_keep_source_code 0x95a3946104132973b00ec0a2f00f7cc2b67e751f
 ```
 
 The output has 3 sections in JSON format:
