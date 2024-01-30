@@ -17,7 +17,7 @@ readme = "README.md"
 python = "^3.12.1"
 octopus = { path = "octopus", develop = true }
 slither-analyzer = { path = "slither", develop = true }
-evm-cfg-builder = { path = "evm_cfg_builder", develop = true }
+evm-cfg-builder = "^0.3.1"
 hexbytes = "^0.3.1"
 
 [tool.poetry.group.dev.dependencies]

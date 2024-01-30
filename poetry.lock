@@ -775,16 +775,13 @@ version = "0.3.1"
 description = "EVM cfg builder written in Python 3."
 optional = false
 python-versions = ">=3.6"
-files = []
-develop = true
+files = [
+    {file = "evm-cfg-builder-0.3.1.tar.gz", hash = "sha256:eb9e8c268f0c678348bc022a40ab028c4a15211a2b2ab3d2fccf3b7874f6f926"},
+]
 
 [package.dependencies]
 crytic-compile = ">=0.1.13"
 pyevmasm = ">=0.1.1"
-
-[package.source]
-type = "directory"
-url = "evm_cfg_builder"
 
 [[package]]
 name = "executing"
@@ -2438,4 +2435,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12.1"
-content-hash = "72f3435f26241a9241136bcd9ee91f4502f6bd4bfb03e4889a2985ee700f3483"
+content-hash = "6c134825d436c532bcceed547bc61364a726edbf7a2a6d8808bdcecfcd464691"
