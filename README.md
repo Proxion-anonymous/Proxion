@@ -1,7 +1,6 @@
-# Proxion - ICDCS 2024 Submission
+# Proxion - ACM ASIACCS 2025 Submission
 
-This is the repo for reviewing our submission “Uncovering All Proxy Smart Contracts in Ethereum”
-in ICDCS 2024.
+This is the repo for reviewing our submission “Proxion: Uncovering Hidden Proxy Smart Contracts for Finding Collision Vulnerabilities in Ethereum” in ASIACCS 2025.
 
 The raw data of our studies elaborated in our submission is available at:
 https://drive.google.com/drive/folders/1FHCxSYq5jNnBRo7sWKAmWZkypFRGMlww?usp=sharing
